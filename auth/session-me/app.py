@@ -4,7 +4,7 @@ from functools import wraps
 
 app = Flask(__name__)
 
-# セッション設定
+# サーバー側で保有しているセッション設定
 app.config['SECRET_KEY'] = 'your-secret-key'
 app.config['SESSION_TYPE'] = 'filesystem'               # セッションデータをファイルシステムに保存
 app.config['SESSION_COOKIE_NAME'] = 'session-id'        # クッキーのキー名を 'session-id' に変更
@@ -54,6 +54,9 @@ def get_current_user():
     認証済みユーザーの情報を返すエンドポイント:
     セッションに保存されたユーザー情報を返す。
     """
+    
+    # 認証済みであればユーザー情報を返す
+    
     return jsonify(session['user'])
 
 @app.route('/auth/logout', methods=['POST'])
@@ -63,6 +66,7 @@ def logout():
     ログアウトエンドポイント:
     セッションからユーザー情報を削除してログアウト処理を実施する。
     """
+    # セッションからユーザー情報を取り除く
     session.pop('user', None)
     return jsonify({'message': 'ログアウトしました'})
 

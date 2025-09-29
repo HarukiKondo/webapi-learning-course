@@ -6,6 +6,7 @@ servers:
   - url: http://localhost:9000
     description: Local development server
 paths:
+  # greetsエンドポイントの定義
   /greets:
     get:
       summary: Returns a greeting message
@@ -20,6 +21,7 @@ paths:
                   message:
                     type: string
                     example: "Hello, world!"
+  # calculateエンドポイントの定義
   /calculate:
     post:
       summary: Performs a calculation

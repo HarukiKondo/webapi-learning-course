@@ -1,10 +1,12 @@
 services:
+  # バックエンドのコンテナ
   flask:
     build: ./backend
     container_name: flask_server
     ports:
       - "8080:8080"
 
+  # フロントエンドのコンテナ
   nginx:
     build: ./frontend
     container_name: nginx_server
