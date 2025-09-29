@@ -22,6 +22,7 @@ def no_stale_while_revalidate():
             "timestamp": now.isoformat() + "Z",
         })
     )
+    # キャッシュうコントロールの設定を追加
     response.headers['Cache-Control'] = "max-age=30"
     return response
 
@@ -37,6 +38,7 @@ def with_stale_while_revalidate():
             "timestamp": now.isoformat() + "Z",
         })
     )
+    # キャッシュうコントロールの設定を追加
     response.headers['Cache-Control'] = "max-age=30, stale-while-revalidate=30"
     return response
 
