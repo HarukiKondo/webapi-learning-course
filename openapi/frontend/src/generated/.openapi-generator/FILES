@@ -1,0 +1,9 @@
+.openapi-generator-ignore
+apis/DefaultApi.ts
+apis/index.ts
+index.ts
+models/CalculatePost200Response.ts
+models/CalculatePostRequest.ts
+models/GreetsGet200Response.ts
+models/index.ts
+runtime.ts
