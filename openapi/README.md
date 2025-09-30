@@ -85,3 +85,24 @@ docker run --rm \
 ```bash
 docker compose up --build
 ```
+
+以下のようになればOK!
+
+```bash
+flask_server  |  * Serving Flask app '__main__' (lazy loading)
+flask_server  |  * Environment: production
+flask_server  |    WARNING: This is a development server. Do not use it in a production deployment.
+flask_server  |    Use a production WSGI server instead.
+flask_server  |  * Debug mode: off
+flask_server  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+flask_server  |  * Running on all addresses (0.0.0.0)
+flask_server  |  * Running on http://127.0.0.1:8080
+flask_server  |  * Running on http://172.20.0.2:8080
+flask_server  | Press CTRL+C to quit
+```
+
+検証が終わった後は以下のコマンドでコンテナを停止＆削除
+
+```bash
+docker compose down
+```
