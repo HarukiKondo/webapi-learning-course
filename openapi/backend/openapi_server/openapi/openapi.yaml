@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  title: Example API
+  version: 1.0.0
+servers:
+- description: Local development server
+  url: http://localhost:9000
+paths:
+  /calculate:
+    post:
+      operationId: calculate_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/_calculate_post_request"
+        description: Input numbers for the calculation
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_calculate_post_200_response"
+          description: Calculation result
+      summary: Performs a calculation
+      x-openapi-router-controller: openapi_server.controllers.default_controller
+  /greets:
+    get:
+      operationId: greets_get
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_greets_get_200_response"
+          description: A greeting message
+      summary: Returns a greeting message
+      x-openapi-router-controller: openapi_server.controllers.default_controller
+components:
+  schemas:
+    _calculate_post_200_response:
+      example:
+        result: 15
+      properties:
+        result:
+          example: 15
+          title: result
+          type: number
+      title: _calculate_post_200_response
+      type: object
+    _greets_get_200_response:
+      example:
+        message: "Hello, world!"
+      properties:
+        message:
+          example: "Hello, world!"
+          title: message
+          type: string
+      title: _greets_get_200_response
+      type: object
+    _calculate_post_request:
+      properties:
+        num1:
+          example: 5
+          title: num1
+          type: number
+        num2:
+          example: 10
+          title: num2
+          type: number
+      title: _calculate_post_request
+      type: object

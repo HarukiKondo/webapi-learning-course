@@ -1,6 +1,6 @@
 # OpenAI Genreater によるコンテナ起動コマンド
 
-以下のコマンドによりOpenAPI仕様書に従ったAPIが立ち上がある(ただしコントローラー部分のみ)
+以下のコマンドによりOpenAPI仕様書に従ったクライアント用のコードが自動で生成される
 
 ```bash
 docker run --rm \
@@ -54,4 +54,34 @@ Status: Downloaded newer image for openapitools/openapi-generator-cli:latest
 ############################################################################################
 ```
 
-`frontend/src/generated` 以下に生成されたコードが入っていることを確認してください。
+`frontend/src/generated` 配下に生成されたコードが入っていることを確認してください。
+
+
+サーバー側も自動で生成する
+
+```bash
+docker run --rm \
+    -v $PWD:/local openapitools/openapi-generator-cli generate \
+    -i /local/openapi.yaml \
+    -g python-flask \
+    -o /local/backend
+```
+
+以下のようになればOK!
+
+```bash
+############################################################################################
+# Thanks for using OpenAPI Generator.                                                      #
+# We appreciate your support! Please consider donation to help us maintain this project.   #
+# https://opencollective.com/openapi_generator/donate                                      #
+############################################################################################
+```
+
+`backend` 配下に生成されたコードが入っていることを確認してください。
+
+
+起動する
+
+```bash
+docker compose up --build
+```
